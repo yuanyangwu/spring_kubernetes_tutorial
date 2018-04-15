@@ -5,12 +5,10 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class MyRunner implements CommandLineRunner {
-
-	@Override
-	public void run(String... args) throws Exception {
-		while (true) {
-			Thread.sleep(1000);
-		}
-	}
-
+  @Override
+  public void run(String... args) throws Exception {
+    while (true) {
+      Thread.sleep(1000);
+    }
+  }
 }
