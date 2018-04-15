@@ -1,0 +1,18 @@
+spring:
+  profiles:
+    active:
+    - receiver
+    #- sender
+  rabbitmq:
+    host: 127.0.0.1
+    port: 5672
+    username: admin
+    password: secret
+
+logging:
+  level:
+    root: INFO
+    #org.springframework.context.annotation: DEBUG
+    #com.example.rabbitmqapp: DEBUG
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss.SSS} %5p ${HOSTNAME} ${PID:- } --- [%15.15t] %-40.40logger{39} : %m%n"
