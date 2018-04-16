@@ -174,6 +174,8 @@ Notes
 - 3: It spends 0.1s proceeding a message
 - 4: It throws exception for 20% of message
 
+Spring AMQP by default takes a conservative approach to message acknowledgement. If the listener throws an exception, the container calls ```channel.basicReject(deliveryTag, requeue)``` to enqueue message back to message queue.
+
 ```java
 @Log
 @RabbitListener(queues = "hello") // 1
