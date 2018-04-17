@@ -324,6 +324,16 @@ Test 2 is to launch 2 receivers in 2 consoles and 1 sender at 1 console.
 2018-04-15 21:18:35.945  INFO CNENWUF2L1C 4512 --- [cTaskExecutor-1] com.example.rabbitmqapp.MyReceiver       : [x] Received 'Hello.13'
 ```
 
+## Summary
+
+- RabbitMQ server
+  - AMQP protocol. It can be accessed by Linux command and other application
+  - Distribute messages to receivers evenly
+  - Persist messages. After RabbitMQ server reboots, application can receive messages sent before reboot.
+- Spring application
+  - Write RabbitMQ sender and receiver with a few of lines
+  - After receiving a message, if receiver throws exception, Spring sends reject to RabbitMQ server. That makes RabbitMQ send same message to same or different receiver.
+
 ## Reference
 
 - RabbitMQ Spring Training [training 1](https://www.rabbitmq.com/tutorials/tutorial-one-spring-amqp.html), [training 2](https://www.rabbitmq.com/tutorials/tutorial-two-spring-amqp.html)
