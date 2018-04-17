@@ -1,0 +1,54 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: rabbitmq-sender
+spec:
+  selector:
+    matchLabels:
+      app: rabbitmq-sender
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: rabbitmq-sender
+    spec:
+      containers:
+      - name: rabbitmq-sender
+        image: k8smaster:5000/rabbitmq-app:0.0.1
+        env:
+        - name: SPRING_PROFILES_ACTIVE
+          value: "sender"
+        - name: SPRING_RABBITMQ_HOST
+          value: "rabbitmq-service"
+        - name: SPRING_RABBITMQ_USERNAME
+          value: "guest"
+        - name: SPRING_RABBITMQ_PASSWORD
+          value: "guest"
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: rabbitmq-receiver
+spec:
+  selector:
+    matchLabels:
+      app: rabbitmq-receiver
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: rabbitmq-receiver
+    spec:
+      containers:
+      - name: rabbitmq-receiver
+        image: k8smaster:5000/rabbitmq-app:0.0.1
+        env:
+        - name: SPRING_PROFILES_ACTIVE
+          value: "receiver"
+        - name: SPRING_RABBITMQ_HOST
+          value: "rabbitmq-service"
+        - name: SPRING_RABBITMQ_USERNAME
+          value: "guest"
+        - name: SPRING_RABBITMQ_PASSWORD
+          value: "guest"
+
