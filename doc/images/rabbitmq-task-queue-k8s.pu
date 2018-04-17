@@ -1,0 +1,29 @@
+@startuml
+node rabbitmq-sender <<deployment>> as Sender #SkyBlue {
+  node "rabbitmq-app:0.0.1" <<pod>> #LightYellow
+}
+
+node "rabbitmq-receiver\n(replicas:2)" <<deployment>> as Receiver #SkyBlue {
+  node "rabbitmq-app:0.0.1 (2)" <<pod>> #LightYellow
+}
+
+node rabbitmq-service <<service>> as Service #GreenYellow {
+  node rabbitmq <<deployment>> #SkyBlue {
+    node "rabbitmq:3-management" <<pod>> #LightYellow
+  }
+}
+
+Sender -- Service : TCP (Port 5672)
+Receiver -- Service
+@enduml
+
+@startuml
+rectangle Service #GreenYellow
+rectangle Deployment #SkyBlue
+rectangle ReplicationSet #LightPink
+rectangle Pods #LightYellow
+
+Service ..> Pods : "selected\nby label"
+Deployment o-- ReplicationSet
+ReplicationSet o-- Pods
+@enduml
