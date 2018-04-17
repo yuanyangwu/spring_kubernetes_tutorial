@@ -6,7 +6,7 @@ We will deploy and test RabbitMQ server and our RabbitMQ Spring sender/receiver 
 
 ## Kubernetes setup
 
-### Kubernetes testbed on vagrant with
+### Kubernetes testbed on Vagrant
 
 ```console
 git clone https://github.com/xbernpa/vagrant-kubernetes-lab.git
