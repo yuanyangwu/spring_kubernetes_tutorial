@@ -110,7 +110,7 @@ spec:
 
 Console output
 
-- 1: Service "rabbitmq-service" accepts TCP request at 10.102.234.100:5672. The IP is Kubernetes overlayed network. It is reachable by Kubernetes Pod. But it is not reachable by non-Kubernetes application.
+- 1: Service "rabbitmq-service" accepts TCP request at 10.102.234.100:5672. The IP is on Kubernetes overlay network. It is reachable by Kubernetes Pod. But it is not reachable by non-Kubernetes application.
 - 2: Deployment "rabbitmq"
 - 3: ReplicationSet "rabbitmq-6c45c46587". It is generated with Deployment name as prefix
 - 4: Pod "rabbitmq-6c45c46587-gs6q5". It is generated with ReplicationSet name as prefix
