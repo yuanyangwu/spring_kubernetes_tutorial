@@ -5,12 +5,14 @@ metadata:
 spec:
   selector:
     matchLabels:
-      app: rabbitmq-sender
+      app: rabbitmq
+      mode: sender
   replicas: 1
   template:
     metadata:
       labels:
-        app: rabbitmq-sender
+        app: rabbitmq
+        mode: sender
     spec:
       containers:
       - name: rabbitmq-sender
@@ -32,12 +34,14 @@ metadata:
 spec:
   selector:
     matchLabels:
-      app: rabbitmq-receiver
+      app: rabbitmq
+      mode: receiver
   replicas: 2
   template:
     metadata:
       labels:
-        app: rabbitmq-receiver
+        app: rabbitmq
+        mode: receiver
     spec:
       containers:
       - name: rabbitmq-receiver
